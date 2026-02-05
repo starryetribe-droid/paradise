@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const PackageListing: React.FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="animate-fade-in bg-white min-h-screen pb-20">
@@ -13,7 +15,7 @@ const PackageListing: React.FC = () => {
             <span className="text-[11px] font-bold">04.08 - 04.09 | 성인 2명</span>
           </div>
         </div>
-        <button 
+        <button
           onClick={() => setIsFilterOpen(!isFilterOpen)}
           className="text-[10px] font-bold border border-white/20 px-3 py-1.5 transition-all"
         >
@@ -52,10 +54,10 @@ const PackageListing: React.FC = () => {
           { id: 2, img: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=800&sat=-100' },
           { id: 3, img: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=800&sat=-100' }
         ].map((item) => (
-          <div key={item.id} className="group cursor-pointer text-left">
+          <div key={item.id} onClick={() => navigate('/package-detail')} className="group cursor-pointer text-left">
             <div className="relative aspect-[16/10] bg-gray-100 flex items-center justify-center border border-gray-100 mb-6 overflow-hidden">
-              <img 
-                src={item.img} 
+              <img
+                src={item.img}
                 className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                 alt="Package Visual"
               />
@@ -63,7 +65,7 @@ const PackageListing: React.FC = () => {
                 강력 추천
               </div>
             </div>
-            
+
             <div className="flex justify-between items-start mb-3">
               <h4 className="text-lg font-bold text-black tracking-tight">크리스탈 스위트 스테이</h4>
               <span className="text-[9px] text-gray-400 font-bold border border-gray-100 px-2 py-0.5">한정 수량</span>
@@ -71,7 +73,7 @@ const PackageListing: React.FC = () => {
             <p className="text-[12px] text-gray-500 leading-relaxed mb-10 font-medium">
               스와로브스키 기프트와 프리미엄 조식이 포함된 스테이 패키지. 도심 속 완벽한 휴식을 제안합니다.
             </p>
-            
+
             <div className="flex items-center justify-between pt-8 border-t border-gray-100">
               <div className="flex flex-col items-start">
                 <span className="text-[9px] text-gray-300 font-bold line-through mb-1">1,850,000</span>
@@ -80,7 +82,10 @@ const PackageListing: React.FC = () => {
                   <span className="text-[10px] text-gray-400 font-bold">원</span>
                 </div>
               </div>
-              <button className="px-8 py-3 bg-black text-white text-[11px] font-bold tracking-widest hover:bg-gray-800 transition-all">
+              <button
+                onClick={(e) => { e.stopPropagation(); navigate('/package-detail'); }}
+                className="px-8 py-3 bg-black text-white text-[11px] font-bold tracking-widest hover:bg-gray-800 transition-all"
+              >
                 선택하기
               </button>
             </div>

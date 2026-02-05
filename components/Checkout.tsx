@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout: React.FC = () => {
   const [isCompleted, setIsCompleted] = useState(false);
@@ -14,11 +15,12 @@ const Checkout: React.FC = () => {
   const membershipDiscount = 35300;
   const couponDiscount = couponApplied ? 15000 : 0;
   const voucherValue = voucherApplied ? 100000 : 0;
-  
+
   const maxUsablePoints = Math.min(myTotalPoints, basePrice - membershipDiscount - couponDiscount - voucherValue);
   const finalUsedPoints = Math.min(usedPoints, maxUsablePoints);
   const totalAmount = basePrice - membershipDiscount - couponDiscount - voucherValue - finalUsedPoints;
 
+  const navigate = useNavigate();
   const inputClass = "w-full py-4 px-4 bg-white border border-gray-100 text-[12px] font-bold transition-all duration-300 focus:border-black placeholder-gray-200";
   const labelClass = "text-[10px] font-bold tracking-widest text-gray-400 mb-2 block";
 
@@ -26,14 +28,14 @@ const Checkout: React.FC = () => {
     return (
       <div className="animate-fade-in bg-white min-h-screen flex flex-col items-center justify-center px-10 text-center">
         <div className="w-16 h-16 border border-black rounded-full flex items-center justify-center mb-10">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.5"><path d="M20 6L9 17l-5-5"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.5"><path d="M20 6L9 17l-5-5" /></svg>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-black mb-4">예약이 확정되었습니다</h2>
         <p className="text-[12px] text-gray-400 leading-relaxed font-medium mb-16">
           이용해 주셔서 감사합니다. <br />
           마이페이지에서 예약 상세 내역을 확인하실 수 있습니다.
         </p>
-        <button className="w-full py-5 bg-black text-white text-[12px] font-bold tracking-widest" onClick={() => window.location.reload()}>
+        <button className="w-full py-5 bg-black text-white text-[12px] font-bold tracking-widest" onClick={() => navigate('/')}>
           홈으로 이동하기
         </button>
       </div>
@@ -58,7 +60,7 @@ const Checkout: React.FC = () => {
       </div>
 
       <div className="sticky top-[102px] z-40 bg-gray-50 border-b border-gray-100 shadow-sm">
-        <button 
+        <button
           onClick={() => setPurchaseListOpen(!purchaseListOpen)}
           className="w-full px-6 py-6 flex justify-between items-center"
         >
@@ -113,25 +115,25 @@ const Checkout: React.FC = () => {
 
       <div className="px-6 py-16 text-left">
         <h2 className="text-[11px] font-bold tracking-widest uppercase mb-12">혜택 및 할인 적용</h2>
-        
+
         <div className="space-y-16">
           <div>
             <div className="flex justify-between items-baseline mb-6">
               <label className={labelClass}>통합 숙박권</label>
-              <button 
+              <button
                 onClick={() => setShowVoucherInput(!showVoucherInput)}
                 className="text-[10px] font-bold text-black border-b border-black/10 pb-0.5"
               >
                 지류 숙박권 등록
               </button>
             </div>
-            
+
             {showVoucherInput && (
               <div className="mb-6 animate-slide-up">
                 <div className="relative">
                   <input type="text" className={inputClass} placeholder="숙박권 번호 입력" />
                   <button className="absolute right-4 top-1/2 -translate-y-1/2 p-2">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle cx="12" cy="13" r="4" /></svg>
                   </button>
                 </div>
               </div>
@@ -143,7 +145,7 @@ const Checkout: React.FC = () => {
                   <span className="text-[11px] font-bold">플래티넘 멤버십 전용 숙박권</span>
                   <span className={`text-[9px] mt-1 ${voucherApplied ? 'text-gray-400' : 'text-gray-300'}`}>만료일 2026.12.31 | 온라인 전용</span>
                 </div>
-                <button 
+                <button
                   onClick={() => setVoucherApplied(!voucherApplied)}
                   className={`text-[10px] font-bold px-4 py-2 border transition-all ${voucherApplied ? 'bg-white text-black border-white' : 'bg-black text-white border-black'}`}
                 >
@@ -155,7 +157,7 @@ const Checkout: React.FC = () => {
 
           <div className="flex flex-col gap-6">
             <label className={labelClass}>파라다이스 포인트</label>
-            
+
             <div className="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200">
               <div className="bg-gray-50 p-6 flex flex-col items-center">
                 <p className="text-[9px] font-bold text-gray-400 mb-2">나의 보유 포인트</p>
@@ -175,16 +177,16 @@ const Checkout: React.FC = () => {
 
             <div className="flex gap-2">
               <div className="relative flex-1">
-                <input 
-                  type="number" 
-                  className={`${inputClass} pr-12`} 
-                  placeholder="0" 
+                <input
+                  type="number"
+                  className={`${inputClass} pr-12`}
+                  placeholder="0"
                   value={usedPoints || ''}
                   onChange={(e) => setUsedPoints(Number(e.target.value))}
                 />
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-bold text-gray-300">P</span>
               </div>
-              <button 
+              <button
                 onClick={() => setUsedPoints(maxUsablePoints)}
                 className="px-6 bg-black text-white text-[10px] font-bold transition-all active:bg-gray-800"
               >
@@ -206,7 +208,7 @@ const Checkout: React.FC = () => {
                 <span className="text-[11px] font-bold">멤버십 전용 시즌 한정 할인권</span>
                 <span className={`text-[9px] mt-1 ${couponApplied ? 'text-gray-400' : 'text-gray-300'}`}>* 현재 가장 높은 할인 혜택입니다</span>
               </div>
-              <button 
+              <button
                 onClick={() => setCouponApplied(!couponApplied)}
                 className={`text-[10px] font-bold px-4 py-2 border transition-all ${couponApplied ? 'bg-white text-black border-white' : 'bg-black text-white border-black'}`}
               >
@@ -240,7 +242,7 @@ const Checkout: React.FC = () => {
             <span className="text-[11px] text-gray-400 font-bold uppercase">원</span>
           </div>
         </div>
-        <button 
+        <button
           onClick={() => setIsCompleted(true)}
           className="w-full py-5 bg-black text-white text-[13px] font-bold tracking-widest active:scale-[0.98] transition-all"
         >

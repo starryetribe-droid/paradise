@@ -8,15 +8,15 @@ interface ScreenListProps {
 
 const ScreenList: React.FC<ScreenListProps> = ({ onNavigate }) => {
   const screens = [
-    { id: 'home', en: 'HOME', ko: '메인' },
-    { id: 'package', en: 'PACKAGE & TICKET', ko: '패키지 리스트' },
-    { id: 'package-detail', en: 'PACKAGE DETAIL', ko: '객실 및 옵션 선택' },
-    { id: 'offer-detail', en: 'OFFER DETAIL', ko: '오퍼 상세' },
-    { id: 'checkout', en: 'CHECKOUT', ko: '예약 확인 및 결제' },
-    { id: 'reservation', en: 'RESERVATION', ko: '빠른 객실 예약' },
-    { id: 'offers', en: 'SPECIAL OFFERS', ko: '특별 멤버십 혜택' },
-    { id: 'dining', en: 'DINING EXPERIENCE', ko: '다이닝 서비스' },
-    { id: 'wellness', en: 'WELLNESS & ART', ko: '웰니스 및 아트' },
+    { id: '/', en: 'HOME', ko: '메인' },
+    { id: '/package', en: 'PACKAGE & TICKET', ko: '패키지 리스트' },
+    { id: '/package-detail', en: 'PACKAGE DETAIL', ko: '객실 및 옵션 선택' },
+    { id: '/offer-detail', en: 'OFFER DETAIL', ko: '오퍼 상세' },
+    { id: '/checkout', en: 'CHECKOUT', ko: '예약 확인 및 결제' },
+    { id: '#reservation', en: 'RESERVATION', ko: '빠른 객실 예약' },
+    { id: '#offers', en: 'SPECIAL OFFERS', ko: '특별 멤버십 혜택' },
+    { id: '#dining', en: 'DINING EXPERIENCE', ko: '다이닝 서비스' },
+    { id: '#wellness', en: 'WELLNESS & ART', ko: '웰니스 및 아트' },
   ];
 
   return (

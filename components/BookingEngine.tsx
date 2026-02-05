@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BookingEngine: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className={`bg-white border border-gray-100 transition-all duration-500 shadow-sm ${isExpanded ? 'p-6' : 'p-4'}`}>
@@ -17,13 +19,13 @@ const BookingEngine: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center gap-3">
-             <div className="flex flex-col items-end mr-1">
-                <span className="text-[7px] font-bold text-gray-300 uppercase leading-none mb-1">Lowest</span>
-                <span className="text-[13px] font-bold text-black tracking-tight leading-none">353,000~</span>
-             </div>
-             <button className="w-8 h-8 flex items-center justify-center border border-gray-100 rounded-full bg-black">
-               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="m6 9 6 6 6-6"/></svg>
-             </button>
+            <div className="flex flex-col items-end mr-1">
+              <span className="text-[7px] font-bold text-gray-300 uppercase leading-none mb-1">Lowest</span>
+              <span className="text-[13px] font-bold text-black tracking-tight leading-none">353,000~</span>
+            </div>
+            <button className="w-8 h-8 flex items-center justify-center border border-gray-100 rounded-full bg-black">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="m6 9 6 6 6-6" /></svg>
+            </button>
           </div>
         </div>
       ) : (
@@ -34,10 +36,10 @@ const BookingEngine: React.FC = () => {
               <button className="text-[11px] tracking-tight text-gray-300 hover:text-black transition-colors pb-1 font-bold">다이닝 예약</button>
             </div>
             <button onClick={() => setIsExpanded(false)} className="p-1">
-               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.5"><path d="M18 6L6 18M6 6l12 12" /></svg>
             </button>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-px bg-gray-100 border border-gray-100 mb-6">
             <div className="bg-white p-5 cursor-pointer hover:bg-gray-50 transition-colors text-left">
               <p className="text-[9px] text-gray-400 uppercase tracking-widest mb-2 font-bold">Check In</p>
@@ -54,7 +56,7 @@ const BookingEngine: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-3 gap-px bg-gray-100 border border-gray-100 mb-8">
             {[
               { label: '객실 수', value: '1' },
@@ -67,11 +69,14 @@ const BookingEngine: React.FC = () => {
               </div>
             ))}
           </div>
-          
-          <button className="w-full bg-black text-white py-5 text-[12px] font-bold hover:bg-gray-900 transition-all active:scale-[0.98] tracking-[0.2em] uppercase">
+
+          <button
+            onClick={() => navigate('/package')}
+            className="w-full bg-black text-white py-5 text-[12px] font-bold hover:bg-gray-900 transition-all active:scale-[0.98] tracking-[0.2em] uppercase"
+          >
             객실 검색하기
           </button>
-          
+
           <p className="text-center mt-4 text-[9px] text-gray-300 font-bold tracking-widest uppercase">
             * 최저가 보장제 및 회원 전용 혜택 포함
           </p>
